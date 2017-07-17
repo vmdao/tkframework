@@ -2,7 +2,7 @@ Kiến trúc Server: Cơ bản:
 
 - theo mô hình MVC / nhưng chỉ có api view và dữ liệu trả về là json
 - lớp data dùng để giải mã dữ liệu client ví dụ buffer ảnh, graphql fields, và lớp loader giúp giảm số lượng request và đồng bộ dữ liệu trả về qua việc caching, batching các request rời rạc.
-- lớp model hỗ trợ relational database như myysql, postgresql với sequelize, nosql mongo db, đồng bộ từ schema vào database và từ data ra schema, việc cập nhật, validate dữ liệu sẽ nằm ở lớp model
+- lớp model hỗ trợ relational database như mysql, postgresql với sequelize, nosql mongo db, đồng bộ từ schema vào database và từ data ra schema, việc cập nhật, validate dữ liệu sẽ nằm ở lớp model
 - lớp services chứa các lời gọi đến các dịch vụ ngoài như push notification, hoặc là xử lý background như xử lý ảnh video, nhận về các promise
 - lớp passport dùng để xác thực người dùng, sử dụng các strategies như social logic, local login, và api qua access token, keep authorize bằng refresh token, có acl để phân quyền người dùng ( auth -> passport authenticate -> serialize user (update token to db) -> serialize client -> generate access token (expired) -> generate and store refresh token -> respond ) 
 - lớp routes chứa các api trả về theo restful api, hoặc graphql/graphql batching, kiểm tra quyền thực thi theo acl trong routes   
